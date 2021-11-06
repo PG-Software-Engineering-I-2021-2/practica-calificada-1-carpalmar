@@ -23,12 +23,14 @@ public class BibliotecarioTest {
                 softEngineering9);
         Assert.assertEquals(bibliotecario.buscarLibroPorEdicion(copia.getLibroTitulo(), "10th edition"),
                 null);
-        BioAlert luis = bibliotecario.registrarEstudiante("Carlos", "carlos@test.com", "123456789");
-        bibliotecario.registerObserver(luis);
-        Assert.assertEquals(luis.getNombre(), "Carlos");
-        Assert.assertEquals(luis.getEmail(), "carlos@test.com");
+        Assert.assertEquals(bibliotecario.estadoLibro(copia.getLibroTitulo(), "Prestado"),
+                null);
+        BioAlert carlos = bibliotecario.registrarEstudiante("Carlos", "carlos@test.com", "123456789");
+        bibliotecario.registerObserver(carlos);
+        Assert.assertEquals(carlos.getNombre(), "Carlos");
+        Assert.assertEquals(carlos.getEmail(), "carlos@test.com");
         BioAlert jose = bibliotecario.registrarEstudiante("Pedro", "Pedro@test.com", "123456789");
         bibliotecario.registerObserver(jose);
-        bibliotecario.removeObserver(luis);
+        bibliotecario.removeObserver(carlos);
     }
 }

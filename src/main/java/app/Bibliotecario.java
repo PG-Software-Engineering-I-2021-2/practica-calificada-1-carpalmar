@@ -64,6 +64,20 @@ public class Bibliotecario implements Publisher {
         }
         return null;
     }
+
+    public LibroCopia estadoLibro(LibroTitulo libro, String estado) {
+        for (LibroTitulo l : this.libros) {
+            if (l == libro) {
+                for (LibroCopia copia : l.getCopias()) {
+                    if (Objects.equals(copia.getEstado(), estado)) {
+                        return copia;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     public List<LibroCopia> getLibros() {
         List<LibroCopia> copias = new ArrayList<>();
         for (LibroTitulo libro : this.libros) {
@@ -77,6 +91,8 @@ public class Bibliotecario implements Publisher {
         return new BioAlert(nombre, email, celular);
     }
 
+
+
     @Override
     public void registerObserver(Observer observer) {
         this.observers.add(observer);
@@ -86,9 +102,9 @@ public class Bibliotecario implements Publisher {
         this.observers.remove(observer);
     }
     @Override
-    public void notifyObservers(String area) {
+    public void notifyObservers(String estado) {
         for (Observer ob : this.observers) {
-            ob.update(ob, area);
+            ob.update(ob, estado);
         }
     }
 }

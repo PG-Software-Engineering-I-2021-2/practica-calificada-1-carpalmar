@@ -4,10 +4,10 @@ public class BioAlert implements Observer {
     private String nombre;
     private String email;
     private String librodisponible;
-    public BioAlert(String nombre, String email, String librodisponible) {
+    public BioAlert(String nombre, String email, String estado) {
         this.nombre = nombre;
         this.email = email;
-        this.librodisponible = librodisponible;
+        this.librodisponible = estado;
     }
     public String getNombre() {
         return this.nombre;
@@ -19,9 +19,9 @@ public class BioAlert implements Observer {
         return this.librodisponible;
     }
     @Override
-    public void update(Observer observer, String librodisponible) {
-        if (Objects.equals(this.librodisponible, librodisponible)) {
-            System.out.println("Hay una nueva oferta para el area " + librodisponible);
+    public void update(Observer observer, String estado) {
+        if (Objects.equals(this.librodisponible, estado)) {
+            System.out.println(estado);
         }
     }
 }
